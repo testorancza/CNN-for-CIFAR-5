@@ -35,7 +35,7 @@ with cols[0]:
         title='Dokładność na zbiorze treningowym i walidacyjnym w zależności od epoki',
         xaxis_title='Numer epoki',
         yaxis_title='Dokładność',
-        width=850,
+        width=600,
         height=600
     )
     st.plotly_chart(fig)
@@ -62,7 +62,7 @@ with cols[1]:
         title='Funkcja straty na zbiorze treningowym i walidacyjnym w zależności od epoki',
         xaxis_title='Numer epoki',
         yaxis_title='Wartość funkcji straty',
-        width=850,
+        width=600,
         height=600
     )
     st.plotly_chart(fig)
