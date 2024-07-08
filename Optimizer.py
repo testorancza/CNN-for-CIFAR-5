@@ -1,4 +1,5 @@
 import numpy as np
+
 def adam(w, dw, config = None):
     if config is None:
         config = {}

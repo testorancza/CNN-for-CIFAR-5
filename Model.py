@@ -120,8 +120,8 @@ class Model(object):
         self.verbose_mode = kwargs.pop('verbose_mode', True)
 
         self.update_rule = adam
-
         self._reset()
+
     def _reset(self):
         self.current_epoch = 0
         self.best_validation_accuracy = 0

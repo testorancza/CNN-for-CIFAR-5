@@ -1,4 +1,5 @@
 import numpy as np
+
 def dense_forward(x, w, b):
 
     cache = (x, w, b)

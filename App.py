@@ -7,7 +7,7 @@ st.set_page_config(page_title='Strona startowa', page_icon='🏢')
 menu()
 
 st.image(image=str(Path(__file__).parent) + '/logo/logo.png', width=700)
-st.subheader('Dedykowana aplikacja dla modelu konwolucyjnej sieci neuronowej')
+st.subheader('Dedykowana aplikacja dla konwolucyjnej sieci neuronowej')
 st.divider()
 st.markdown('''<h3 style='text-align: center;'>Opis funkcjonalności</h3>''', unsafe_allow_html=True)
 st.write('')

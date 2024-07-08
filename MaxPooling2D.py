@@ -1,4 +1,5 @@
 import numpy as np
+
 def max_pooling_2d_forward(x, pooling_params):
     N, F, H, W = x.shape
 

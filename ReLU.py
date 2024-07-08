@@ -1,4 +1,5 @@
 import numpy as np
+
 def reLU_forward(x):
     cache = x
     reLU_output = np.maximum(0, x)
