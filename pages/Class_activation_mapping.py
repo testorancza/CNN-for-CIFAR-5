@@ -20,7 +20,7 @@ cols = st.columns(2, gap='medium')
 description = False
 
 with cols[0]:
-    option = st.selectbox('Wybierz klasę', options=labels_pl, index=None,
+    option = st.selectbox('Przetestuj działanie funkcji', options=labels_pl, index=None,
                           placeholder='Wybierz klasę')
     if option:
         st.header('Przykładowy obraz')
