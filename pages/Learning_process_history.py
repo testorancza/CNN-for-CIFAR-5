@@ -66,6 +66,7 @@ with cols[1]:
         height=600
     )
     st.plotly_chart(fig)
+    
     #fig.write_image(str(Path(__file__).parents[1]) + 'pages/Learning_process_history/Loss_history.jpg')
 
     ui.metric_card(title='Najmniejsza strata', content=round(min(history['validation_loss_history']), 2), description='Im mniejsza strata tym lepszy model.')
