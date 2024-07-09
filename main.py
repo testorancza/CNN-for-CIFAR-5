@@ -11,6 +11,8 @@ else:
     script_path = str(Path(__file__).parents[1]) + '/Dataset.py'
     with open(script_path, 'r') as file:
         exec(file.read())
+    with open(dataset_path, 'rb') as file2:
+        dataset = pickle.load(file2, encoding='latin1')
 
 model = Model(
             CNN(input_dimension=(3, 32, 32),
