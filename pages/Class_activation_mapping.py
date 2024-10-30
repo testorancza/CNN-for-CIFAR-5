@@ -11,7 +11,8 @@ st.set_page_config(page_title='Mapy aktywacji klas', page_icon='🗺️')
 menu()
 
 st.title('Mapy aktywacji klas')
-st.markdown('Mapy aktywacji klas służą do wizualizacji obszarów obrazu, które model wykorzystuje podczas dokonywania predykcji.')
+st.markdown('Mapy aktywacji klas stworzone za pomocą techniki Grad-CAM (Gradient Weighted Class Activation Mapping) służą do wizualizacji obszarów obrazu, '
+            'na których model skupia się podczas dokonywania predykcji.')
 
 labels = ['Rocket', 'Tank', 'Train', 'Airplane', 'Ship']
 labels_pl = ['Rakieta', 'Czołg', 'Pociąg', 'Samolot', 'Statek']
@@ -73,12 +74,25 @@ with cols[0]:
                     button = st.download_button('Pobierz mapę aktywacji', data=image, file_name='CAM.png', mime='image/png')
 
 if description:
-    with st.expander('Interpretacja mapy'):
+    match option:
+        case 'Rakieta':
+            st.info("Model podejmuje decyzję na podstawie wykrytej strugi spalin rakiety.", icon="ℹ️")
+        case 'Czołg':
+            st.info("Model podejmuje decyzję na podstawie wykrycia gąsienic oraz wieżyczki czołgu.", icon="ℹ️")
+        case 'Pociąg':
+            st.info("Model podejmuje decyzję na podstawie wykrycia wózka jezdnego pociągu.", icon="ℹ️")
+        case 'Samolot':
+            st.info("Model podejmuje decyzję na podstawie wykrycia silników samolotu.", icon="ℹ️")
+        case 'Statek':
+            st.info("Model podejmuje decyzję na podstawie wykrycia nadbudówki statku.", icon="ℹ️")
+
+if description:
+    with st.expander('Interpretacja mapy', expanded=True):
         color_scale = Image.open(str(Path(__file__).parents[1]) + '/pages/Class_activation_mapping/colorscale_rainbow.jpg')
         st.image(color_scale, width=325)
 
         st.caption('Użyta mapa kolorów')
-        st.markdown('Kolor na mapie reprezentuje istotność obszaru podczas klasyfikacji. Im jaśniejszy kolor tym bardziej istotny obszar.')
+        st.markdown('Kolor na mapie reprezentuje istotność obszaru podczas klasyfikacji. Im cieplejszy obszar, tym ważniejszy jest on podczas klasyfikacji.')
 
 
 

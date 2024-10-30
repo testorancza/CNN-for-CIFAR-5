@@ -9,7 +9,9 @@ st.set_page_config(page_title='Podgląd zbioru danych', page_icon='🗃️', lay
 menu()
 
 st.title('Podgląd zbioru danych')
-st.markdown('Zobacz jak wyglądają przykładowe obrazki w każdej z 5 klas.')
+st.markdown('Zbiór danych CIFAR-5 został utworzony na podstawie popularnych zbiorów CIFAR-10 oraz CIFAR-100. '
+            'Składa się on z kolorowych obrazów o rozmiarze 32x32 pikseli 5 klas, każdej o liczności 600 przykładów.'
+            ' Podział na zbiory treningowy, walidacyjny oraz testowy ma stosunek 4:1:1.')
 st.write('')
 
 with open(str(Path(__file__).parents[1]) +'/Dataset/dataset.pickle', 'rb') as file:

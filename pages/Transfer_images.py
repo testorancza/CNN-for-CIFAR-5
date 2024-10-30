@@ -21,6 +21,7 @@ cols = st.columns(2, gap='large')
 
 with cols[0]:
     st.title('Pozyskaj obraz')
+    st.write("Skorzystaj z opcji pobierania obrazków z Internetu i dokonaj ich predykcji korzystając z modelu.")
     option = st.selectbox('Zdjęcie której klasy chcesz pobrać z Internetu?', options=labels_pl, index=None, placeholder='Wybierz klasę')
     if option:
         loading_bar('Pobieranie obrazka z Internetu')
@@ -43,8 +44,9 @@ with cols[0]:
             st.error('Model sklasyfikował obraz jako {}'.format(labels_pl[np.argmax(scores, axis=1)[0]]), icon="🚨")
 
 with cols[1]:
-    st.title('Wczytaj obraz')
-    upload_file = st.file_uploader('Przekaż obraz')
+    st.title('Przekaż obraz')
+    st.write("Przekaż swój własny obraz jednej z pięciu klas i sprawdź czy model poprawnie go sklasyfikuje.")
+    upload_file = st.file_uploader('')
     if upload_file:
         bytes_data = upload_file.getvalue()
         image_array = np.frombuffer(bytes_data, dtype=np.uint8)

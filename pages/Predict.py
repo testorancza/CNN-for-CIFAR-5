@@ -25,7 +25,7 @@ cols = st.columns(2)
 
 with cols[0]:
     st.title('Przewiduj')
-    st.markdown('Dokonaj predykcji obrazka ze zbioru testowego przy użyciu wytrenowanego modelu.')
+    st.markdown('Dokonaj predykcji losowo wybranego obrazka ze zbioru testowego przy użyciu wytrenowanego modelu.')
     if ui.button('Przewiduj', key='clk_btn'):
 
         selected_image = np.random.randint(0, len(dataset['x_test']))
@@ -54,8 +54,8 @@ with cols[0]:
             st.error('Model sklasyfikował obraz jako {}'.format(labels[np.argmax(scores, axis=1)[0]]), icon='🚨')
 
         with cols[1]:
-            st.title('Wyniki')
-            st.markdown('Zobacz jak pewny w klasyfikacji był model.')
+            st.title('Analiza wyników')
+            st.markdown('Dowiedz się więcej o decyzji modelu.')
 
             softmax_output = np.exp(scores) / np.sum(np.exp(scores))
 
@@ -63,7 +63,7 @@ with cols[0]:
             fig.update_layout(title='Procentowa przynależność obrazka do każdej z 5 klas')
             st.plotly_chart(fig)
 
-            with st.expander("Jak model dokonuje predykcji?"):
+            with st.expander("Jak model dokonuje predykcji?", expanded=True):
                 st.markdown('Mając wyniki przynależności obrazka do każdej z klas model uznaje, '
                             'że obrazek należy do klasy o największym wyniku przynależności.')
 

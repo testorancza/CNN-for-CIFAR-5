@@ -12,17 +12,17 @@ st.divider()
 st.markdown('''<h3 style='text-align: center;'>Opis funkcjonalności</h3>''', unsafe_allow_html=True)
 st.write('')
 
-titles = ['**Architektura i parametry modelu** - Opis architektury sieci wraz z poszczególnymi parametrami.',
-          '**Podgląd zbioru danych** - Podgląd przykładowych obrazków każdej z 5 klas.',
+titles = ['**Podgląd zbioru danych** - Podgląd przykładowych obrazków każdej z 5 klas.',
+          '**Architektura i parametry modelu** - Opis architektury sieci wraz z poszczególnymi parametrami.',
+          '**Filtry** - Podgląd filtrów modelu przed oraz po treningu.',
           '**Wykresy procesu uczenia** - Interaktywne wykresy dokładności oraz funkcji straty dla zbioru treningowego i walidacyjnego.',
           '**Ocena modelu** - Statystyki modelu na zbiorze testowym.',
-          '**Filtry** - Podgląd filtrów modelu przed oraz po treningu.',
           '**Mapy aktywacji klas** - Zobacz jakie obszary obrazu są istotne w procesie klasyfikacji.',
           '**Przewiduj** - Dokonaj predykcji obrazka ze zbioru testowego przy użyciu wytrenowanego modelu.',
           '**Przekaż obrazy** - Użyj modelu aby sklasyfikować własny obraz.',
           '**Oceń aplikację** - Oceń działanie aplikacji i zgłoś problemy.']
 
-pages = ['Model_architecture', 'Dataset_preview', 'Learning_process_history', 'Model_evaluation', 'Filters',
+pages = ['Dataset_preview', 'Model_architecture', 'Filters', 'Learning_process_history', 'Model_evaluation',
          'Class_activation_mapping', 'Predict', 'Transfer_images', 'Rate']
 
 for page in list(zip(titles,pages)):

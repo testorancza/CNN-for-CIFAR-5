@@ -35,42 +35,40 @@ def plot_filters(x_input):
 
     return grid
 
+st.title('Filtry')
+st.markdown('''Istotnym elementem sieci konwolucyjnej są filtry, które umożliwiają modelowi detekcję cech obrazów umożliwiając ich klasyfikację.
+        W zależności od rozmiaru, filtry skupiają się na kontretnych aspektach – mniejsze wychwytują drobne detale, 
+        takie jak krawędzie, podczas gdy większe analizują bardziej złożone struktury i szersze konteksty obrazu.''')
 
-cols = st.columns(7)
+cols = st.columns(2)
 
-with cols[1]:
-    st.title('Filtry')
-    st.markdown('Podgląd filtrów modelu przed oraz po treningu.')
+with cols[0]:
+    st.subheader("Filtry przed treningiem")
+    st.write('''Podczas inicjalizacji modelu, filtry dobierane są w sposób losowy przy użyciu algorytmu Glorota, 
+            tak aby zminimalizować problemy związane z zanikaniem gradientu podczas wstecznej propagacji błędu w tej warstwie.
+            W kolejnych iteracjach treningowych sieć na podstawie błedów, które popełnia dostosowuje filtry celem jak najlepszego dopasowania do danych.''')
 
-cols2 = st.columns(2)
-
-with cols2[0]:
     model = CNN()
 
     filters = plot_filters(model.params['w1'].transpose(0, 2, 3, 1))
-    fig = px.imshow(filters.astype('uint8'), title='Filtry przed treningiem', width=550, height=550)
+    fig = px.imshow(filters.astype('uint8'), width=600, height=600)
     fig.update_xaxes(showline=False, visible=False)
     fig.update_yaxes(showline=False, visible=False)
     st.plotly_chart(fig)
     # fig.write_image(str(Path(__file__).parents[1]) + '/pages/Filters/Initialized_filters.jpg')
 
-with cols2[1]:
+
+with cols[1]:
+    st.subheader("Filtry po treningu")
+    st.write('''Po zakończeniu uczenia filtry  prezentują  cechy obrazów, które okazały się kluczowe do poprawnej klasyfikacji przykładów. W przypadku modeli o większej liczbie warstw konwolucjnych,
+    filtry w kolejnych warstwach uczą się coraz bardziej złożonych cech – zaczynając od prostych krawędzi i konturów w początkowych warstwach, po bardziej abstrakcyjne i złożone wzorce w kolejnych.''')
+
     model = CNN()
     model.params = params
 
     filters = plot_filters(params['w1'].transpose(0, 2, 3, 1))
-    fig = px.imshow(filters.astype('uint8'), title='Filtry po treningu', width=550, height=550)
+    fig = px.imshow(filters.astype('uint8'), width=600, height=600)
     fig.update_xaxes(showline=False, visible=False)
     fig.update_yaxes(showline=False, visible=False)
     st.plotly_chart(fig)
     # fig.write_image(str(Path(__file__).parents[1]) + '/pages/Filters/Trained_filters.jpg')
-
-cols3 = st.columns(3)
-
-with cols3[1]:
-    with st.expander('Znaczenie filtrów'):
-        st.markdown('Filtry reprezentują lokalne wzorce obecne w danych wejściowych. '
-                    'W zależności od warstwy wykrywają proste kształty takie jak krawędzie lub rogi w obrazie'
-                    ' jak również bardziej złożone cechy, takie jak koła, twarze, czy inne obiekty.'
-                    'Filtry zostały zainicjowane w sposób losowy i dostosowywane w trakcie procesu uczenia,'
-                    ' aby najlepiej pasować do danych treningowych.')
